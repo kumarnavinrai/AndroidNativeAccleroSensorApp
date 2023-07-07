@@ -18,10 +18,22 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         setContentView(R.layout.activity_main);
         SensorManager sensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
         if(sensorManager!=null){
-            Sensor accleroSensor = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
-            if(accleroSensor!=null){
-                sensorManager.registerListener((SensorEventListener) this, accleroSensor, SensorManager.SENSOR_DELAY_NORMAL);
+            //Acccelro sensor code
+//            Sensor accleroSensor = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
+//            if(accleroSensor!=null){
+//                sensorManager.registerListener((SensorEventListener) this, accleroSensor, SensorManager.SENSOR_DELAY_NORMAL);
+//            }
+            //Proxmity sensor code
+//            Sensor proxiSensor = sensorManager.getDefaultSensor(Sensor.TYPE_PROXIMITY);
+//            if(proxiSensor!=null){
+//                sensorManager.registerListener((SensorEventListener) this, proxiSensor, SensorManager.SENSOR_DELAY_NORMAL);
+//            }
+            //Light Sensor code
+            Sensor lightSensor = sensorManager.getDefaultSensor(Sensor.TYPE_LIGHT);
+            if(lightSensor!=null){
+                sensorManager.registerListener((SensorEventListener) this, lightSensor, SensorManager.SENSOR_DELAY_NORMAL);
             }
+
         } else {
             Toast.makeText(this, "Sensor service not detected.", Toast.LENGTH_SHORT).show();
         }
@@ -31,8 +43,22 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
 
     @Override
     public void onSensorChanged(SensorEvent event){
-        if(event.sensor.getType()==Sensor.TYPE_ACCELEROMETER){
-            ((TextView)findViewById(R.id.txtValues)).setText("X:"+event.values[0] + ", Y: " + event.values[1] + ", Z: " + event.values[2]);
+        //Acccelro sensor code
+//        if(event.sensor.getType()==Sensor.TYPE_ACCELEROMETER){
+//            ((TextView)findViewById(R.id.txtValues)).setText("X:"+event.values[0] + ", Y: " + event.values[1] + ", Z: " + event.values[2]);
+//        }
+        //PROXMITY SENSOR CODE
+//        if(event.sensor.getType()==Sensor.TYPE_PROXIMITY){
+//            ((TextView)findViewById(R.id.txtValues)).setText("Values" + event.values[0]);
+//
+//            if(event.values[0] > 0) {
+//                Toast.makeText(this, "Object is Far", Toast.LENGTH_SHORT).show();
+//            } else {
+//                Toast.makeText(this, "Object is near", Toast.LENGTH_SHORT).show();
+//            }
+//        }
+        if(event.sensor.getType()==Sensor.TYPE_LIGHT){
+            ((TextView)findViewById(R.id.txtValues)).setText("Values" + event.values[0]);
         }
     }
 
